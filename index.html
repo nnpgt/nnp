@@ -13,7 +13,7 @@ h3 button{margin-left:auto;font:inherit;font-size:13px;color:var(--acc);backgrou
 h3 button:hover,h3 button:focus-visible{background:var(--code)}
 pre{margin:0;padding:14px;background:var(--code);overflow-x:auto;font:13.5px/1.55 ui-monospace,Consolas,monospace}
 @media(max-width:760px){body{display:block}nav{position:static;height:auto;width:auto;display:flex;flex-wrap:wrap;gap:4px;border:0;border-bottom:1px solid var(--line)}nav h1{width:100%}main{padding:20px 14px}}
-</style></head><body><nav><h1>DE26 · команды</h1><a href="#t1"><b>1</b>Базовая настройка устройств</a><a href="#t2"><b>2</b>Доступ в Интернет на ISP</a><a href="#t3"><b>3</b>Локальные учётные записи</a><a href="#t5"><b>5</b>Безопасный удалённый доступ (SSH)</a><a href="#t6"><b>6</b>GRE-туннель HQ ↔ BR</a><a href="#t7"><b>7</b>Динамическая маршрутизация (OSPF)</a><a href="#t8"><b>8</b>Динамическая трансляция адресов (NAT)</a><a href="#t9"><b>9</b>DHCP для сети HQ-CLI</a><a href="#t10"><b>10</b>DNS-сервер на HQ-SRV</a><a href="#t11"><b>11</b>Часовой пояс</a></nav><main><section id="t1"><h2><span>1</span>Базовая настройка устройств</h2><div class="blk"><h3>HQ-RTR<button>Копировать</button></h3><pre>enable
+</style></head><body><nav><h1>Че зыришь?</h1><a href="#t1"><b>1</b>Базовая настройка устройств</a><a href="#t2"><b>2</b>Доступ в Интернет на ISP</a><a href="#t3"><b>3</b>Локальные учётные записи</a><a href="#t4"><b>4</b>Настройка Коммутации HQ</a><a href="#t5"><b>5</b>Безопасный удалённый доступ (SSH)</a><a href="#t6"><b>6</b>GRE-туннель HQ ↔ BR</a><a href="#t7"><b>7</b>Динамическая маршрутизация (OSPF)</a><a href="#t8"><b>8</b>Динамическая трансляция адресов (NAT)</a><a href="#t9"><b>9</b>DHCP для сети HQ-CLI</a><a href="#t10"><b>10</b>DNS-сервер на HQ-SRV</a><a href="#t11"><b>11</b>Часовой пояс</a></nav><main><section id="t1"><h2><span>1</span>Базовая настройка устройств</h2><div class="blk"><h3>HQ-RTR<button>Копировать</button></h3><pre>enable
 configure terminal
 hostname hq-rtr
 ip domain-name au-team.irpo
@@ -148,7 +148,9 @@ password P@ssw0rd
 role admin
 exit
 write memory
-show users localdb</pre></div></section><section id="t5"><h2><span>5</span>Безопасный удалённый доступ (SSH)</h2><div class="blk"><h3>HQ-SRV и BR-SRV<button>Копировать</button></h3><pre>sed -i -E &#x27;/^\s*#?\s*(Port|AllowUsers|MaxAuthTries|Banner)\s/d&#x27; /etc/openssh/sshd_config
+
+show users localdb</pre></div></section><section id="t4"><h2><span>4</span>Настройка Коммутации HQ</h2><div class="blk"><h3>HQ-SW · проверка и настройка trunk ens18<button>Копировать</button></h3><pre>ovs-vsctl show
+ovs-vsctl add-port bri ens18 trunks=100,200,999</pre></div><div class="blk"><h3>HQ-SRV · проверка связи с HQ-RTR<button>Копировать</button></h3><pre>ping 192.168.100.1</pre></div></section><section id="t5"><h2><span>5</span>Безопасный удалённый доступ (SSH)</h2><div class="blk"><h3>HQ-SRV и BR-SRV<button>Копировать</button></h3><pre>sed -i -E &#x27;/^\s*#?\s*(Port|AllowUsers|MaxAuthTries|Banner)\s/d&#x27; /etc/openssh/sshd_config
 cat &gt;&gt; /etc/openssh/sshd_config &lt;&lt;&#x27;EOF&#x27;
 Port 2026
 AllowUsers sshuser
