@@ -1,31 +1,181 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>nnp26 — lol</title><style>
-:root{--bg:#f6f8fb;--ink:#1d2a38;--mut:#6b7b8c;--acc:#1f6fa8;--line:#dfe6ee;--code:#eef2f7}
-*{box-sizing:border-box}body{margin:0;font:16px/1.5 "Segoe UI",system-ui,sans-serif;color:var(--ink);background:var(--bg);display:flex}
-nav{position:sticky;top:0;height:100vh;width:280px;flex:none;overflow:auto;padding:24px 16px;border-right:1px solid var(--line);background:#fff}
-nav h1{font-size:18px;margin:0 8px 16px}nav a{display:flex;gap:10px;padding:7px 8px;color:var(--ink);text-decoration:none;border-radius:6px;font-size:14.5px}
-nav a:hover,nav a:focus-visible{background:var(--code);outline:0}nav b{color:var(--acc);min-width:20px}
-main{flex:1;min-width:0;max-width:880px;padding:32px 28px 80px}section{margin-bottom:44px}
-h2{font-size:24px;margin:0 0 16px;display:flex;gap:12px;align-items:baseline}h2 span{color:var(--acc);font-weight:700}
-.blk{background:#fff;border:1px solid var(--line);border-radius:8px;margin-bottom:14px;overflow:hidden}
-h3{margin:0;padding:9px 14px;font-size:14.5px;font-weight:600;border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center}
-h3 em{font-style:normal;font-weight:400;font-size:12px;color:#8a6200;background:#fff3d6;padding:1px 8px;border-radius:10px}
-h3 button{margin-left:auto;font:inherit;font-size:13px;color:var(--acc);background:none;border:1px solid var(--line);border-radius:6px;padding:2px 10px;cursor:pointer}
-h3 button:hover,h3 button:focus-visible{background:var(--code)}
-pre{margin:0;padding:14px;background:var(--code);overflow-x:auto;font:13.5px/1.55 ui-monospace,Consolas,monospace}
-@media(max-width:760px){body{display:block}nav{position:static;height:auto;width:auto;display:flex;flex-wrap:wrap;gap:4px;border:0;border-bottom:1px solid var(--line)}nav h1{width:100%}main{padding:20px 14px}}
-</style></head><body><nav><h1>Че зыришь?</h1><a href="#t1"><b>1</b>Базовая настройка устройств</a><a href="#t2"><b>2</b>Доступ в Интернет на ISP</a><a href="#t3"><b>3</b>Локальные учётные записи</a><a href="#t4"><b>4</b>Настройка Коммутации HQ</a><a href="#t5"><b>5</b>Безопасный удалённый доступ (SSH)</a><a href="#t6"><b>6</b>GRE-туннель HQ ↔ BR</a><a href="#t7"><b>7</b>Динамическая маршрутизация (OSPF)</a><a href="#t8"><b>8</b>Динамическая трансляция адресов (NAT)</a><a href="#t9"><b>9</b>DHCP для сети HQ-CLI</a><a href="#t10"><b>10</b>DNS-сервер на HQ-SRV</a><a href="#t11"><b>11</b>Часовой пояс</a></nav><main><section id="t1"><h2><span>1</span>Базовая настройка устройств</h2><div class="blk"><h3>HQ-RTR<button>Копировать</button></h3><pre>enable
+<!DOCTYPE html>
+<html lang="ru">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>
+   nnp26 &mdash; lol
+  </title>
+  <link href="assets/css/styles.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <!-- Навигация по разделам сайта -->
+  <nav>
+   <h1>
+    &CHcy;&iecy; &zcy;&ycy;&rcy;&icy;&shcy;&softcy;?
+   </h1>
+   <a href="#t1">
+    <b>
+     1
+    </b>
+    &Bcy;&acy;&zcy;&ocy;&vcy;&acy;&yacy; &ncy;&acy;&scy;&tcy;&rcy;&ocy;&jcy;&kcy;&acy; &ucy;&scy;&tcy;&rcy;&ocy;&jcy;&scy;&tcy;&vcy;
+   </a>
+   <a href="#t2">
+    <b>
+     2
+    </b>
+    &Dcy;&ocy;&scy;&tcy;&ucy;&pcy; &vcy; &Icy;&ncy;&tcy;&iecy;&rcy;&ncy;&iecy;&tcy; &ncy;&acy; ISP
+   </a>
+   <a href="#t3">
+    <b>
+     3
+    </b>
+    &Lcy;&ocy;&kcy;&acy;&lcy;&softcy;&ncy;&ycy;&iecy; &ucy;&chcy;&iocy;&tcy;&ncy;&ycy;&iecy; &zcy;&acy;&pcy;&icy;&scy;&icy;
+   </a>
+   <a href="#t4">
+    <b>
+     4
+    </b>
+    &Ncy;&acy;&scy;&tcy;&rcy;&ocy;&jcy;&kcy;&acy; &Kcy;&ocy;&mcy;&mcy;&ucy;&tcy;&acy;&tscy;&icy;&icy; HQ
+   </a>
+   <a href="#t5">
+    <b>
+     5
+    </b>
+    &Bcy;&iecy;&zcy;&ocy;&pcy;&acy;&scy;&ncy;&ycy;&jcy; &ucy;&dcy;&acy;&lcy;&iocy;&ncy;&ncy;&ycy;&jcy; &dcy;&ocy;&scy;&tcy;&ucy;&pcy; (SSH)
+   </a>
+   <a href="#t6">
+    <b>
+     6
+    </b>
+    GRE-&tcy;&ucy;&ncy;&ncy;&iecy;&lcy;&softcy; HQ &harr; BR
+   </a>
+   <a href="#t7">
+    <b>
+     7
+    </b>
+    &Dcy;&icy;&ncy;&acy;&mcy;&icy;&chcy;&iecy;&scy;&kcy;&acy;&yacy; &mcy;&acy;&rcy;&shcy;&rcy;&ucy;&tcy;&icy;&zcy;&acy;&tscy;&icy;&yacy; (OSPF)
+   </a>
+   <a href="#t8">
+    <b>
+     8
+    </b>
+    &Dcy;&icy;&ncy;&acy;&mcy;&icy;&chcy;&iecy;&scy;&kcy;&acy;&yacy; &tcy;&rcy;&acy;&ncy;&scy;&lcy;&yacy;&tscy;&icy;&yacy; &acy;&dcy;&rcy;&iecy;&scy;&ocy;&vcy; (NAT)
+   </a>
+   <a href="#t9">
+    <b>
+     9
+    </b>
+    DHCP &dcy;&lcy;&yacy; &scy;&iecy;&tcy;&icy; HQ-CLI
+   </a>
+   <a href="#t10">
+    <b>
+     10
+    </b>
+    DNS-&scy;&iecy;&rcy;&vcy;&iecy;&rcy; &ncy;&acy; HQ-SRV
+   </a>
+   <a href="#t11">
+    <b>
+     11
+    </b>
+    &CHcy;&acy;&scy;&ocy;&vcy;&ocy;&jcy; &pcy;&ocy;&yacy;&scy;
+   </a>
+  </nav>
+  <!-- Основное содержимое: каждый раздел находится в отдельной section -->
+  <main>
+   <section id="t1">
+    <h2>
+     <span>
+      1
+     </span>
+     &Bcy;&acy;&zcy;&ocy;&vcy;&acy;&yacy; &ncy;&acy;&scy;&tcy;&rcy;&ocy;&jcy;&kcy;&acy; &ucy;&scy;&tcy;&rcy;&ocy;&jcy;&scy;&tcy;&vcy;
+    </h2>
+    <div class="blk">
+     <h3>
+      HQ-RTR
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>enable
 configure terminal
 hostname hq-rtr
 ip domain-name au-team.irpo
 write memory
 show hostname
-show running-config | include domain-name</pre></div><div class="blk"><h3>BR-RTR<button>Копировать</button></h3><pre>enable
+show running-config | include domain-name</pre>
+    </div>
+    <div class="blk">
+     <h3>
+      BR-RTR
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>enable
 configure terminal
 hostname br-rtr
 ip domain-name au-team.irpo
 write memory
 show hostname
-show running-config | include domain-name</pre></div><div class="blk"><h3>HQ-SRV<button>Копировать</button></h3><pre>hostnamectl set-hostname hq-srv.au-team.irpo; exec bash</pre></div><div class="blk"><h3>BR-SRV<em>по аналогии</em><button>Копировать</button></h3><pre>hostnamectl set-hostname br-srv.au-team.irpo; exec bash</pre></div><div class="blk"><h3>HQ-CLI<em>по аналогии</em><button>Копировать</button></h3><pre>hostnamectl set-hostname hq-cli.au-team.irpo; exec bash</pre></div><div class="blk"><h3>ISP<em>по аналогии</em><button>Копировать</button></h3><pre>hostnamectl set-hostname isp.au-team.irpo; exec bash</pre></div><div class="blk"><h3>HQ-RTR · адреса VLAN<em>по аналогии</em><button>Копировать</button></h3><pre>enable
+show running-config | include domain-name</pre>
+    </div>
+    <div class="blk">
+     <h3>
+      HQ-SRV
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>hostnamectl set-hostname hq-srv.au-team.irpo; exec bash</pre>
+    </div>
+    <div class="blk">
+     <h3>
+      BR-SRV
+      <em>
+       &pcy;&ocy; &acy;&ncy;&acy;&lcy;&ocy;&gcy;&icy;&icy;
+      </em>
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>hostnamectl set-hostname br-srv.au-team.irpo; exec bash</pre>
+    </div>
+    <div class="blk">
+     <h3>
+      HQ-CLI
+      <em>
+       &pcy;&ocy; &acy;&ncy;&acy;&lcy;&ocy;&gcy;&icy;&icy;
+      </em>
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>hostnamectl set-hostname hq-cli.au-team.irpo; exec bash</pre>
+    </div>
+    <div class="blk">
+     <h3>
+      ISP
+      <em>
+       &pcy;&ocy; &acy;&ncy;&acy;&lcy;&ocy;&gcy;&icy;&icy;
+      </em>
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>hostnamectl set-hostname isp.au-team.irpo; exec bash</pre>
+    </div>
+    <div class="blk">
+     <h3>
+      HQ-RTR &middot; &acy;&dcy;&rcy;&iecy;&scy;&acy; VLAN
+      <em>
+       &pcy;&ocy; &acy;&ncy;&acy;&lcy;&ocy;&gcy;&icy;&icy;
+      </em>
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>enable
 configure terminal
 interface vl100
 ip address 192.168.100.1/27
@@ -35,7 +185,16 @@ ip address 192.168.200.1/24
 exit
 interface vl999
 ip address 192.168.99.1/29
-exit</pre></div><div class="blk"><h3>HQ-RTR · service-instance<button>Копировать</button></h3><pre>show port brief
+exit</pre>
+    </div>
+    <div class="blk">
+     <h3>
+      HQ-RTR &middot; service-instance
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>show port brief
 port te1
 service-instance te1/vl100
 encapsulation dot1q 100 exact
@@ -54,7 +213,19 @@ connect ip interface vl999
 exit
 exit
 write memory
-show ip interface brief</pre></div><div class="blk"><h3>BR-RTR · адреса<em>по аналогии</em><button>Копировать</button></h3><pre>enable
+show ip interface brief</pre>
+    </div>
+    <div class="blk">
+     <h3>
+      BR-RTR &middot; &acy;&dcy;&rcy;&iecy;&scy;&acy;
+      <em>
+       &pcy;&ocy; &acy;&ncy;&acy;&lcy;&ocy;&gcy;&icy;&icy;
+      </em>
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>enable
 configure terminal
 interface int1
 description "BR-Net"
@@ -67,28 +238,84 @@ connect ip interface int1
 exit
 exit
 write memory
-show ip interface brief</pre></div><div class="blk"><h3>HQ-SRV · IPv4<button>Копировать</button></h3><pre>echo &quot;192.168.100.2/27&quot; &gt; /etc/net/ifaces/ens19/ipv4address
-echo &quot;default via 192.168.100.1&quot; &gt; /etc/net/ifaces/ens19/ipv4route
-echo &quot;nameserver 77.88.8.8&quot; &gt; /etc/net/ifaces/ens19/resolv.conf
+show ip interface brief</pre>
+    </div>
+    <div class="blk">
+     <h3>
+      HQ-SRV &middot; IPv4
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>echo "192.168.100.2/27" &gt; /etc/net/ifaces/ens19/ipv4address
+echo "default via 192.168.100.1" &gt; /etc/net/ifaces/ens19/ipv4route
+echo "nameserver 77.88.8.8" &gt; /etc/net/ifaces/ens19/resolv.conf
 systemctl restart network
-cat /etc/net/ifaces/ens19/options</pre></div><div class="blk"><h3>BR-SRV · IPv4<em>по аналогии</em><button>Копировать</button></h3><pre>echo &quot;192.168.0.2/28&quot; &gt; /etc/net/ifaces/ens19/ipv4address
-echo &quot;default via 192.168.0.1&quot; &gt; /etc/net/ifaces/ens19/ipv4route
-echo &quot;nameserver 77.88.8.8&quot; &gt; /etc/net/ifaces/ens19/resolv.conf
-systemctl restart network</pre></div></section><section id="t2"><h2><span>2</span>Доступ в Интернет на ISP</h2><div class="blk"><h3>ISP · ens19 по DHCP<button>Копировать</button></h3><pre>ip -c a
-sed -i &#x27;s/^BOOTPROTO=.*/BOOTPROTO=dhcp/&#x27; /etc/net/ifaces/ens19/options
+cat /etc/net/ifaces/ens19/options</pre>
+    </div>
+    <div class="blk">
+     <h3>
+      BR-SRV &middot; IPv4
+      <em>
+       &pcy;&ocy; &acy;&ncy;&acy;&lcy;&ocy;&gcy;&icy;&icy;
+      </em>
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>echo "192.168.0.2/28" &gt; /etc/net/ifaces/ens19/ipv4address
+echo "default via 192.168.0.1" &gt; /etc/net/ifaces/ens19/ipv4route
+echo "nameserver 77.88.8.8" &gt; /etc/net/ifaces/ens19/resolv.conf
+systemctl restart network</pre>
+    </div>
+   </section>
+   <section id="t2">
+    <h2>
+     <span>
+      2
+     </span>
+     &Dcy;&ocy;&scy;&tcy;&ucy;&pcy; &vcy; &Icy;&ncy;&tcy;&iecy;&rcy;&ncy;&iecy;&tcy; &ncy;&acy; ISP
+    </h2>
+    <div class="blk">
+     <h3>
+      ISP &middot; ens19 &pcy;&ocy; DHCP
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>ip -c a
+sed -i 's/^BOOTPROTO=.*/BOOTPROTO=dhcp/' /etc/net/ifaces/ens19/options
 systemctl restart network
 ip -c a
 ip -c r
-ping -c3 77.88.8.8</pre></div><div class="blk"><h3>ISP · ens20, ens21<button>Копировать</button></h3><pre>mkdir /etc/net/ifaces/ens20
+ping -c3 77.88.8.8</pre>
+    </div>
+    <div class="blk">
+     <h3>
+      ISP &middot; ens20, ens21
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>mkdir /etc/net/ifaces/ens20
 mkdir /etc/net/ifaces/ens21
 ls /etc/net/ifaces
-echo &quot;TYPE=eth&quot; &gt; /etc/net/ifaces/ens20/options
-echo &quot;BOOTPROTO=static&quot; &gt;&gt; /etc/net/ifaces/ens20/options
+echo "TYPE=eth" &gt; /etc/net/ifaces/ens20/options
+echo "BOOTPROTO=static" &gt;&gt; /etc/net/ifaces/ens20/options
 cp /etc/net/ifaces/ens20/options /etc/net/ifaces/ens21/options
-echo &quot;172.16.1.1/28&quot; &gt; /etc/net/ifaces/ens20/ipv4address
-echo &quot;172.16.2.1/28&quot; &gt; /etc/net/ifaces/ens21/ipv4address
+echo "172.16.1.1/28" &gt; /etc/net/ifaces/ens20/ipv4address
+echo "172.16.2.1/28" &gt; /etc/net/ifaces/ens21/ipv4address
 systemctl restart network
-ip -c a</pre></div><div class="blk"><h3>ISP · forwarding и NAT<button>Копировать</button></h3><pre>sed -i &#x27;s/^net.ipv4.ip_forward.*/net.ipv4.ip_forward = 1/&#x27; /etc/net/sysctl.conf
+ip -c a</pre>
+    </div>
+    <div class="blk">
+     <h3>
+      ISP &middot; forwarding &icy; NAT
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>sed -i 's/^net.ipv4.ip_forward.*/net.ipv4.ip_forward = 1/' /etc/net/sysctl.conf
 systemctl restart network
 sysctl -a | grep ip_forward
 apt-get update &amp;&amp; apt-get install -y iptables
@@ -96,10 +323,19 @@ iptables -t nat -A POSTROUTING -s 172.16.1.0/28 -o ens19 -j MASQUERADE
 iptables -t nat -A POSTROUTING -s 172.16.2.0/28 -o ens19 -j MASQUERADE
 iptables-save &gt;&gt; /etc/sysconfig/iptables
 systemctl enable --now iptables
-iptables -t nat -L -n -v</pre></div><div class="blk"><h3>HQ-RTR<button>Копировать</button></h3><pre>enable
+iptables -t nat -L -n -v</pre>
+    </div>
+    <div class="blk">
+     <h3>
+      HQ-RTR
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>enable
 conf t
 interface isp
-description &quot;ISP&quot;
+description "ISP"
 ip address 172.16.1.2/28
 exit
 ip route 0.0.0.0/0 172.16.1.1
@@ -114,10 +350,19 @@ write memory
 show ip interface brief
 show ip route static
 ping 172.16.1.1
-ping 77.88.8.8</pre></div><div class="blk"><h3>BR-RTR<button>Копировать</button></h3><pre>enable
+ping 77.88.8.8</pre>
+    </div>
+    <div class="blk">
+     <h3>
+      BR-RTR
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>enable
 conf t
 interface isp
-description &quot;ISP&quot;
+description "ISP"
 ip address 172.16.2.2/28
 exit
 ip route 0.0.0.0/0 172.16.2.1
@@ -131,17 +376,43 @@ write memory
 show ip interface brief
 show ip route
 ping 172.16.2.1
-ping 77.88.8.8</pre></div></section><section id="t3"><h2><span>3</span>Локальные учётные записи</h2><div class="blk"><h3>HQ-SRV и BR-SRV<button>Копировать</button></h3><pre>useradd sshuser -u 2026
+ping 77.88.8.8</pre>
+    </div>
+   </section>
+   <section id="t3">
+    <h2>
+     <span>
+      3
+     </span>
+     &Lcy;&ocy;&kcy;&acy;&lcy;&softcy;&ncy;&ycy;&iecy; &ucy;&chcy;&iocy;&tcy;&ncy;&ycy;&iecy; &zcy;&acy;&pcy;&icy;&scy;&icy;
+    </h2>
+    <div class="blk">
+     <h3>
+      HQ-SRV &icy; BR-SRV
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>useradd sshuser -u 2026
 id sshuser
 id -u sshuser
 passwd sshuser
-# пароль: P@ssw0rd
+# &pcy;&acy;&rcy;&ocy;&lcy;&softcy;: P@ssw0rd
 usermod -aG wheel sshuser
-echo &quot;sshuser ALL=(ALL:ALL) NOPASSWD: ALL&quot; &gt;&gt; /etc/sudoers
-# проверка под sshuser
+echo "sshuser ALL=(ALL:ALL) NOPASSWD: ALL" &gt;&gt; /etc/sudoers
+# &pcy;&rcy;&ocy;&vcy;&iecy;&rcy;&kcy;&acy; &pcy;&ocy;&dcy; sshuser
 id
 sudo -i
-whoami</pre></div><div class="blk"><h3>HQ-RTR и BR-RTR<button>Копировать</button></h3><pre>enable
+whoami</pre>
+    </div>
+    <div class="blk">
+     <h3>
+      HQ-RTR &icy; BR-RTR
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>enable
 configure terminal
 username net_admin
 password P@ssw0rd
@@ -149,48 +420,171 @@ role admin
 exit
 write memory
 
-show users localdb</pre></div></section><section id="t4"><h2><span>4</span>Настройка Коммутации HQ</h2><div class="blk"><h3>HQ-SW · проверка и настройка trunk ens18<button>Копировать</button></h3><pre>ovs-vsctl show
-ovs-vsctl add-port bri ens18 trunks=100,200,999</pre></div><div class="blk"><h3>HQ-SW · поднятие моста и настройка интерфейсов<button>Копировать</button></h3><pre>ip link set dev bri up
+show users localdb</pre>
+    </div>
+   </section>
+   <section id="t4">
+    <h2>
+     <span>
+      4
+     </span>
+     &Ncy;&acy;&scy;&tcy;&rcy;&ocy;&jcy;&kcy;&acy; &Kcy;&ocy;&mcy;&mcy;&ucy;&tcy;&acy;&tscy;&icy;&icy; HQ
+    </h2>
+    <div class="blk">
+     <h3>
+      HQ-SW &middot; &pcy;&ocy;&dcy;&gcy;&ocy;&tcy;&ocy;&vcy;&kcy;&acy; &icy;&ncy;&tcy;&iecy;&rcy;&fcy;&iecy;&jcy;&scy;&ocy;&vcy;
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>ip link set dev bri up
 cd /etc/net/ifaces/
-mkdir ens18
-mkdir ens19
-mkdir ens20
-cp /ens3/options ens18
-cp /ens3/options ens19
-cp /ens3/options ens20
-systemctl restart network</pre></div><div class="blk"><h3>HQ-SRV · проверка связи с HQ-RTR<button>Копировать</button></h3><pre>ping 192.168.100.1</pre></div></section><section id="t5"><h2><span>5</span>Безопасный удалённый доступ (SSH)</h2><div class="blk"><h3>HQ-SRV и BR-SRV<button>Копировать</button></h3><pre>sed -i -E &#x27;/^\s*#?\s*(Port|AllowUsers|MaxAuthTries|Banner)\s/d&#x27; /etc/openssh/sshd_config
-cat &gt;&gt; /etc/openssh/sshd_config &lt;&lt;&#x27;EOF&#x27;
+mkdir -p ens18 ens19 ens20
+cp /etc/net/ifaces/ens3/options /etc/net/ifaces/ens18/options
+cp /etc/net/ifaces/ens3/options /etc/net/ifaces/ens19/options
+cp /etc/net/ifaces/ens3/options /etc/net/ifaces/ens20/options
+systemctl restart network</pre>
+    </div>
+    <div class="blk">
+     <h3>
+      HQ-SW &middot; trunk &kcy; HQ-RTR &chcy;&iecy;&rcy;&iecy;&zcy; ens18
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>ovs-vsctl show
+ovs-vsctl add-port bri ens18 trunks=100,200,999
+ovs-vsctl show</pre>
+    </div>
+    <div class="blk">
+     <h3>
+      HQ-SW &middot; access-&pcy;&ocy;&rcy;&tcy; ens19 &dcy;&lcy;&yacy; HQ-SRV (VLAN 100)
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>ovs-vsctl add-port bri ens19 tag=100
+ovs-vsctl show</pre>
+    </div>
+    <div class="blk">
+     <h3>
+      HQ-SW &middot; access-&pcy;&ocy;&rcy;&tcy; ens20 &dcy;&lcy;&yacy; HQ-CLI (VLAN 200)
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>ovs-vsctl add-port bri ens20 tag=200
+ovs-vsctl show</pre>
+    </div>
+    <div class="blk">
+     <h3>
+      &Pcy;&rcy;&ocy;&vcy;&iecy;&rcy;&kcy;&acy; &scy;&vcy;&yacy;&zcy;&icy; &middot; HQ-SRV &rarr; HQ-RTR
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>ping 192.168.100.1</pre>
+    </div>
+    <div class="blk">
+     <h3>
+      &Pcy;&rcy;&ocy;&vcy;&iecy;&rcy;&kcy;&acy; &scy;&vcy;&yacy;&zcy;&icy; &middot; HQ-CLI &rarr; HQ-RTR
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>ping 192.168.200.1</pre>
+    </div>
+   </section>
+   <section id="t5">
+    <h2>
+     <span>
+      5
+     </span>
+     &Bcy;&iecy;&zcy;&ocy;&pcy;&acy;&scy;&ncy;&ycy;&jcy; &ucy;&dcy;&acy;&lcy;&iocy;&ncy;&ncy;&ycy;&jcy; &dcy;&ocy;&scy;&tcy;&ucy;&pcy; (SSH)
+    </h2>
+    <div class="blk">
+     <h3>
+      HQ-SRV &icy; BR-SRV
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>sed -i -E '/^\s*#?\s*(Port|AllowUsers|MaxAuthTries|Banner)\s/d' /etc/openssh/sshd_config
+cat &gt;&gt; /etc/openssh/sshd_config &lt;&lt;'EOF'
 Port 2026
 AllowUsers sshuser
 MaxAuthTries 2
 Banner /etc/openssh/banner
 EOF
-echo &quot;Authorized access only&quot; &gt; /etc/openssh/banner
+echo "Authorized access only" &gt; /etc/openssh/banner
 systemctl restart sshd
-# проверка
+# &pcy;&rcy;&ocy;&vcy;&iecy;&rcy;&kcy;&acy;
 ssh sshuser@localhost
 ssh -p 2026 sshuser@localhost
-ssh -p 2026 user@localhost</pre></div></section><section id="t6"><h2><span>6</span>GRE-туннель HQ ↔ BR</h2><div class="blk"><h3>HQ-RTR<button>Копировать</button></h3><pre>enable
+ssh -p 2026 user@localhost</pre>
+    </div>
+   </section>
+   <section id="t6">
+    <h2>
+     <span>
+      6
+     </span>
+     GRE-&tcy;&ucy;&ncy;&ncy;&iecy;&lcy;&softcy; HQ &harr; BR
+    </h2>
+    <div class="blk">
+     <h3>
+      HQ-RTR
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>enable
 configure terminal
 interface tunnel.0
-description &quot;GRE&quot;
+description "GRE"
 ip address 10.10.10.1/30
 ip tunnel 172.16.1.2 172.16.2.2 mode gre
 exit
 write memory
 show interface tunnel.0
 show ip interface brief
-ping 10.10.10.2</pre></div><div class="blk"><h3>BR-RTR<button>Копировать</button></h3><pre>enable
+ping 10.10.10.2</pre>
+    </div>
+    <div class="blk">
+     <h3>
+      BR-RTR
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>enable
 configure terminal
 interface tunnel.0
-description &quot;GRE&quot;
+description "GRE"
 ip address 10.10.10.2/30
 ip tunnel 172.16.2.2 172.16.1.2 mode gre
 exit
 write memory
 show interface tunnel.0
 show ip interface brief
-ping 10.10.10.1</pre></div></section><section id="t7"><h2><span>7</span>Динамическая маршрутизация (OSPF)</h2><div class="blk"><h3>HQ-RTR<button>Копировать</button></h3><pre>enable
+ping 10.10.10.1</pre>
+    </div>
+   </section>
+   <section id="t7">
+    <h2>
+     <span>
+      7
+     </span>
+     &Dcy;&icy;&ncy;&acy;&mcy;&icy;&chcy;&iecy;&scy;&kcy;&acy;&yacy; &mcy;&acy;&rcy;&shcy;&rcy;&ucy;&tcy;&icy;&zcy;&acy;&tscy;&icy;&yacy; (OSPF)
+    </h2>
+    <div class="blk">
+     <h3>
+      HQ-RTR
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>enable
 configure terminal
 router ospf 1
 ospf router-id 10.10.10.1
@@ -209,7 +603,16 @@ write memory
 show ip ospf interface tunnel.0
 show ip ospf interface
 show ip ospf neighbor
-show ip route</pre></div><div class="blk"><h3>BR-RTR<button>Копировать</button></h3><pre>enable
+show ip route</pre>
+    </div>
+    <div class="blk">
+     <h3>
+      BR-RTR
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>enable
 configure terminal
 router ospf 1
 ospf router-id 10.10.10.2
@@ -226,7 +629,42 @@ write memory
 show ip ospf interface tunnel.0
 show ip ospf interface
 show ip ospf neighbor
-show ip route</pre></div><div class="blk"><h3>HQ-SRV<button>Копировать</button></h3><pre>ping -c3 192.168.0.2</pre></div><div class="blk"><h3>BR-SRV<button>Копировать</button></h3><pre>ping -c3 192.168.100.2</pre></div></section><section id="t8"><h2><span>8</span>Динамическая трансляция адресов (NAT)</h2><div class="blk"><h3>HQ-RTR<button>Копировать</button></h3><pre>enable
+show ip route</pre>
+    </div>
+    <div class="blk">
+     <h3>
+      HQ-SRV
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>ping -c3 192.168.0.2</pre>
+    </div>
+    <div class="blk">
+     <h3>
+      BR-SRV
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>ping -c3 192.168.100.2</pre>
+    </div>
+   </section>
+   <section id="t8">
+    <h2>
+     <span>
+      8
+     </span>
+     &Dcy;&icy;&ncy;&acy;&mcy;&icy;&chcy;&iecy;&scy;&kcy;&acy;&yacy; &tcy;&rcy;&acy;&ncy;&scy;&lcy;&yacy;&tscy;&icy;&yacy; &acy;&dcy;&rcy;&iecy;&scy;&ocy;&vcy; (NAT)
+    </h2>
+    <div class="blk">
+     <h3>
+      HQ-RTR
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>enable
 configure terminal
 interface isp
 ip nat outside
@@ -247,7 +685,16 @@ ip nat source dynamic inside-to-outside pool VLAN100 overload interface isp
 ip nat source dynamic inside-to-outside pool VLAN200 overload interface isp
 ip nat source dynamic inside-to-outside pool VLAN999 overload interface isp
 write memory
-show ip nat translations</pre></div><div class="blk"><h3>BR-RTR<button>Копировать</button></h3><pre>enable
+show ip nat translations</pre>
+    </div>
+    <div class="blk">
+     <h3>
+      BR-RTR
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>enable
 configure terminal
 interface isp
 ip nat outside
@@ -259,7 +706,33 @@ ip nat pool BR-Net 192.168.0.1-192.168.0.14
 ip nat source dynamic inside-to-outside pool BR-Net overload interface isp
 exit
 write memory
-show ip nat translations</pre></div><div class="blk"><h3>HQ-SRV и BR-SRV<button>Копировать</button></h3><pre>ping -c3 77.88.8.8</pre></div></section><section id="t9"><h2><span>9</span>DHCP для сети HQ-CLI</h2><div class="blk"><h3>HQ-RTR<button>Копировать</button></h3><pre>enable
+show ip nat translations</pre>
+    </div>
+    <div class="blk">
+     <h3>
+      HQ-SRV &icy; BR-SRV
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>ping -c3 77.88.8.8</pre>
+    </div>
+   </section>
+   <section id="t9">
+    <h2>
+     <span>
+      9
+     </span>
+     DHCP &dcy;&lcy;&yacy; &scy;&iecy;&tcy;&icy; HQ-CLI
+    </h2>
+    <div class="blk">
+     <h3>
+      HQ-RTR
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>enable
 configure terminal
 ip pool VLAN200 192.168.200.2-192.168.200.254
 dhcp-server 1
@@ -274,8 +747,20 @@ interface vl200
 dhcp-server 1
 exit
 write memory
-show dhcp-server clients vl200</pre></div><div class="blk"><h3>HQ-CLI<em>по аналогии</em><button>Копировать</button></h3><pre>mkdir -p /etc/net/ifaces/ens19
-cat &gt; /etc/net/ifaces/ens19/options &lt;&lt;&#x27;EOF&#x27;
+show dhcp-server clients vl200</pre>
+    </div>
+    <div class="blk">
+     <h3>
+      HQ-CLI
+      <em>
+       &pcy;&ocy; &acy;&ncy;&acy;&lcy;&ocy;&gcy;&icy;&icy;
+      </em>
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>mkdir -p /etc/net/ifaces/ens19
+cat &gt; /etc/net/ifaces/ens19/options &lt;&lt;'EOF'
 TYPE=eth
 BOOTPROTO=dhcp
 DISABLED=no
@@ -285,28 +770,54 @@ systemctl restart network
 ip -c a
 ip -c r
 cat /etc/resolv.conf
-ping -c3 77.88.8.8</pre></div></section><section id="t10"><h2><span>10</span>DNS-сервер на HQ-SRV</h2><div class="blk"><h3>HQ-SRV · установка и options.conf<button>Копировать</button></h3><pre>apt-get update &amp;&amp; apt-get install bind bind-utils -y
-sed -i -E &#x27;s|^\s*(//)?\s*listen-on\s*\{.*|listen-on { 192.168.100.2; };|&#x27; /var/lib/bind/etc/options.conf
-sed -i -E &#x27;s|^\s*(//)?\s*listen-on-v6\s*\{.*|listen-on-v6 { none; };|&#x27; /var/lib/bind/etc/options.conf
-sed -i -E &#x27;s|^\s*(//)?\s*forwarders\s*\{.*|forwarders { 77.88.8.8; };|&#x27; /var/lib/bind/etc/options.conf
-sed -i -E &#x27;s|^\s*(//)?\s*allow-query\s*\{.*|allow-query { any; };|&#x27; /var/lib/bind/etc/options.conf</pre></div><div class="blk"><h3>HQ-SRV · зоны<button>Копировать</button></h3><pre>cat &gt;&gt; /var/lib/bind/etc/rfc1912.conf &lt;&lt;&#x27;EOF&#x27;
-zone &quot;au-team.irpo&quot; {
+ping -c3 77.88.8.8</pre>
+    </div>
+   </section>
+   <section id="t10">
+    <h2>
+     <span>
+      10
+     </span>
+     DNS-&scy;&iecy;&rcy;&vcy;&iecy;&rcy; &ncy;&acy; HQ-SRV
+    </h2>
+    <div class="blk">
+     <h3>
+      HQ-SRV &middot; &ucy;&scy;&tcy;&acy;&ncy;&ocy;&vcy;&kcy;&acy; &icy; options.conf
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>apt-get update &amp;&amp; apt-get install bind bind-utils -y
+sed -i -E 's|^\s*(//)?\s*listen-on\s*\{.*|listen-on { 192.168.100.2; };|' /var/lib/bind/etc/options.conf
+sed -i -E 's|^\s*(//)?\s*listen-on-v6\s*\{.*|listen-on-v6 { none; };|' /var/lib/bind/etc/options.conf
+sed -i -E 's|^\s*(//)?\s*forwarders\s*\{.*|forwarders { 77.88.8.8; };|' /var/lib/bind/etc/options.conf
+sed -i -E 's|^\s*(//)?\s*allow-query\s*\{.*|allow-query { any; };|' /var/lib/bind/etc/options.conf</pre>
+    </div>
+    <div class="blk">
+     <h3>
+      HQ-SRV &middot; &zcy;&ocy;&ncy;&ycy;
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>cat &gt;&gt; /var/lib/bind/etc/rfc1912.conf &lt;&lt;'EOF'
+zone "au-team.irpo" {
     type master;
-    file &quot;au-team.irpo&quot;;
+    file "au-team.irpo";
 };
-zone &quot;100.168.192.in-addr.arpa&quot; {
+zone "100.168.192.in-addr.arpa" {
     type master;
-    file &quot;100.168.192.in-addr.arpa&quot;;
+    file "100.168.192.in-addr.arpa";
 };
-zone &quot;200.168.192.in-addr.arpa&quot; {
+zone "200.168.192.in-addr.arpa" {
     type master;
-    file &quot;200.168.192.in-addr.arpa&quot;;
+    file "200.168.192.in-addr.arpa";
 };
 EOF
 cp /var/lib/bind/etc/zone/empty /var/lib/bind/etc/zone/au-team.irpo
 cp /var/lib/bind/etc/zone/empty /var/lib/bind/etc/zone/100.168.192.in-addr.arpa
 cp /var/lib/bind/etc/zone/empty /var/lib/bind/etc/zone/200.168.192.in-addr.arpa
-cat &gt; /var/lib/bind/etc/zone/au-team.irpo &lt;&lt;&#x27;EOF&#x27;
+cat &gt; /var/lib/bind/etc/zone/au-team.irpo &lt;&lt;'EOF'
 $TTL 1D
 @   IN  SOA au-team.irpo. root.au-team.irpo. (
             2025062300 ; serial
@@ -327,7 +838,7 @@ web     IN  A   172.16.2.1
 br-srv  IN  A   192.168.0.2
 br-rtr  IN  A   192.168.0.1
 EOF
-cat &gt; /var/lib/bind/etc/zone/100.168.192.in-addr.arpa &lt;&lt;&#x27;EOF&#x27;
+cat &gt; /var/lib/bind/etc/zone/100.168.192.in-addr.arpa &lt;&lt;'EOF'
 $TTL 1D
 @   IN  SOA au-team.irpo. root.au-team.irpo. (
             2025062300 ; serial
@@ -340,7 +851,7 @@ $TTL 1D
 1   IN  PTR hq-rtr.au-team.irpo.
 2   IN  PTR hq-srv.au-team.irpo.
 EOF
-cat &gt; /var/lib/bind/etc/zone/200.168.192.in-addr.arpa &lt;&lt;&#x27;EOF&#x27;
+cat &gt; /var/lib/bind/etc/zone/200.168.192.in-addr.arpa &lt;&lt;'EOF'
 $TTL 1D
 @   IN  SOA au-team.irpo. root.au-team.irpo. (
             2025062300 ; serial
@@ -352,13 +863,31 @@ $TTL 1D
     IN  NS  au-team.irpo.
 1   IN  PTR hq-rtr.au-team.irpo.
 2   IN  PTR hq-cli.au-team.irpo.
-EOF</pre></div><div class="blk"><h3>HQ-SRV · rndc и запуск<button>Копировать</button></h3><pre>rndc-confgen &gt; /var/lib/bind/etc/rndc.key
-sed -i &#x27;6,$d&#x27; /var/lib/bind/etc/rndc.key
+EOF</pre>
+    </div>
+    <div class="blk">
+     <h3>
+      HQ-SRV &middot; rndc &icy; &zcy;&acy;&pcy;&ucy;&scy;&kcy;
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>rndc-confgen &gt; /var/lib/bind/etc/rndc.key
+sed -i '6,$d' /var/lib/bind/etc/rndc.key
 chown -R root:named /var/lib/bind/etc/zone/*
 named-checkconf
 named-checkconf -z
 systemctl enable --now bind.service
-systemctl status bind.service</pre></div><div class="blk"><h3>HQ-CLI · проверка<button>Копировать</button></h3><pre>cat /etc/resolv.conf
+systemctl status bind.service</pre>
+    </div>
+    <div class="blk">
+     <h3>
+      HQ-CLI &middot; &pcy;&rcy;&ocy;&vcy;&iecy;&rcy;&kcy;&acy;
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>cat /etc/resolv.conf
 ping -c3 ya.ru
 host hq-srv.au-team.irpo
 host hq-cli.au-team.irpo
@@ -370,9 +899,42 @@ host web.au-team.irpo
 host 192.168.100.1
 host 192.168.100.2
 host 192.168.200.1
-host 192.168.200.2</pre></div></section><section id="t11"><h2><span>11</span>Часовой пояс</h2><div class="blk"><h3>HQ-RTR и BR-RTR<button>Копировать</button></h3><pre>ntp timezone utc+3
+host 192.168.200.2</pre>
+    </div>
+   </section>
+   <section id="t11">
+    <h2>
+     <span>
+      11
+     </span>
+     &CHcy;&acy;&scy;&ocy;&vcy;&ocy;&jcy; &pcy;&ocy;&yacy;&scy;
+    </h2>
+    <div class="blk">
+     <h3>
+      HQ-RTR &icy; BR-RTR
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>ntp timezone utc+3
 write memory
-show ntp timezone</pre></div><div class="blk"><h3>ISP, HQ-SRV, HQ-CLI, BR-SRV<button>Копировать</button></h3><pre>apt-get update &amp;&amp; apt-get install -y tzdata
+show ntp timezone</pre>
+    </div>
+    <div class="blk">
+     <h3>
+      ISP, HQ-SRV, HQ-CLI, BR-SRV
+      <button>
+       &Kcy;&ocy;&pcy;&icy;&rcy;&ocy;&vcy;&acy;&tcy;&softcy;
+      </button>
+     </h3>
+     <pre>apt-get update &amp;&amp; apt-get install -y tzdata
 timedatectl set-timezone Europe/Moscow
-timedatectl</pre></div></section></main>
-<script>document.querySelectorAll('h3 button').forEach(b=>b.onclick=()=>{navigator.clipboard.writeText(b.closest('.blk').querySelector('pre').textContent);b.textContent='Скопировано';setTimeout(()=>b.textContent='Копировать',1500)})</script></body></html>
+timedatectl</pre>
+    </div>
+   </section>
+  </main>
+  <script defer="" src="assets/js/main.js">
+  </script>
+ </body>
+</html>
+
