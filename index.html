@@ -92,8 +92,8 @@ ip -c a</pre></div><div class="blk"><h3>ISP · forwarding и NAT<button>Копи
 systemctl restart network
 sysctl -a | grep ip_forward
 apt-get update &amp;&amp; apt-get install -y iptables
-iptables -t nat -A POSTROUTING -s 172.16.1.0/28 -o ens19 -j MASQUERADE
-iptables -t nat -A POSTROUTING -s 172.16.2.0/28 -o ens19 -j MASQUERADE
+iptables -t nat -A POSTROUTING -s 172.16.1.0/28 -o ens20 -j MASQUERADE
+iptables -t nat -A POSTROUTING -s 172.16.2.0/28 -o ens20 -j MASQUERADE
 iptables-save &gt;&gt; /etc/sysconfig/iptables
 systemctl enable --now iptables
 iptables -t nat -L -n -v</pre></div><div class="blk"><h3>HQ-RTR<button>Копировать</button></h3><pre>enable
