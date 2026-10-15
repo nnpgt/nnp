@@ -74,7 +74,7 @@ systemctl restart network
 cat /etc/net/ifaces/ens19/options</pre></div><div class="blk"><h3>BR-SRV · IPv4<em>по аналогии</em><button>Копировать</button></h3><pre>echo &quot;192.168.0.2/28&quot; &gt; /etc/net/ifaces/ens19/ipv4address
 echo &quot;default via 192.168.0.1&quot; &gt; /etc/net/ifaces/ens19/ipv4route
 echo &quot;nameserver 77.88.8.8&quot; &gt; /etc/net/ifaces/ens19/resolv.conf
-systemctl restart network</pre></div></section><section id="t2"><h2><span>2</span>Доступ в Интернет на ISP</h2><div class="blk"><h3>ISP · ens19 по DHCP<button>Копировать</button></h3><pre>ip -c a
+systemctl restart network</pre></div></section><section id="t2"><h2><span>2</span>Доступ в Интернет на ISP</h2><div class="blk"><h3>ISP · ens20 по DHCP<button>Копировать</button></h3><pre>ip -c a
 sed -i &#x27;s/^BOOTPROTO=.*/BOOTPROTO=dhcp/&#x27; /etc/net/ifaces/ens20/options
 systemctl restart network
 ip -c a
