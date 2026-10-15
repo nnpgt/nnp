@@ -75,18 +75,18 @@ cat /etc/net/ifaces/ens19/options</pre></div><div class="blk"><h3>BR-SRV · IPv4
 echo &quot;default via 192.168.0.1&quot; &gt; /etc/net/ifaces/ens19/ipv4route
 echo &quot;nameserver 77.88.8.8&quot; &gt; /etc/net/ifaces/ens19/resolv.conf
 systemctl restart network</pre></div></section><section id="t2"><h2><span>2</span>Доступ в Интернет на ISP</h2><div class="blk"><h3>ISP · ens19 по DHCP<button>Копировать</button></h3><pre>ip -c a
-sed -i &#x27;s/^BOOTPROTO=.*/BOOTPROTO=dhcp/&#x27; /etc/net/ifaces/ens19/options
+sed -i &#x27;s/^BOOTPROTO=.*/BOOTPROTO=dhcp/&#x27; /etc/net/ifaces/ens20/options
 systemctl restart network
 ip -c a
 ip -c r
-ping -c3 77.88.8.8</pre></div><div class="blk"><h3>ISP · ens20, ens21<button>Копировать</button></h3><pre>mkdir /etc/net/ifaces/ens20
-mkdir /etc/net/ifaces/ens21
+ping -c3 77.88.8.8</pre></div><div class="blk"><h3>ISP · ens18, ens19<button>Копировать</button></h3><pre>mkdir /etc/net/ifaces/ens18
+mkdir /etc/net/ifaces/ens19
 ls /etc/net/ifaces
-echo &quot;TYPE=eth&quot; &gt; /etc/net/ifaces/ens20/options
-echo &quot;BOOTPROTO=static&quot; &gt;&gt; /etc/net/ifaces/ens20/options
-cp /etc/net/ifaces/ens20/options /etc/net/ifaces/ens21/options
-echo &quot;172.16.1.1/28&quot; &gt; /etc/net/ifaces/ens20/ipv4address
-echo &quot;172.16.2.1/28&quot; &gt; /etc/net/ifaces/ens21/ipv4address
+echo &quot;TYPE=eth&quot; &gt; /etc/net/ifaces/ens18/options
+echo &quot;BOOTPROTO=static&quot; &gt;&gt; /etc/net/ifaces/ens18/options
+cp /etc/net/ifaces/ens18/options /etc/net/ifaces/ens19/options
+echo &quot;172.16.1.1/28&quot; &gt; /etc/net/ifaces/ens18/ipv4address
+echo &quot;172.16.2.1/28&quot; &gt; /etc/net/ifaces/ens19/ipv4address
 systemctl restart network
 ip -c a</pre></div><div class="blk"><h3>ISP · forwarding и NAT<button>Копировать</button></h3><pre>sed -i &#x27;s/^net.ipv4.ip_forward.*/net.ipv4.ip_forward = 1/&#x27; /etc/net/sysctl.conf
 systemctl restart network
